@@ -1,6 +1,6 @@
 package com.moosh.utils.annotation;
 
-import com.moosh.proxy.GatewayServerInitializer;
+import com.moosh.server.ClientRegistryServerInitializer;
 import org.springframework.context.annotation.Import;
 
 import java.lang.annotation.ElementType;
@@ -15,6 +15,6 @@ import java.lang.annotation.Target;
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-@Import({GatewayServerInitializer.class})
-public @interface EnableGateway {
+@Import({ClientRegistryServerInitializer.class})
+public @interface EnableRegistryServer {
 }

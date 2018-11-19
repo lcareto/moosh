@@ -5,7 +5,7 @@
 
   <artifactId>gateway</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <packaging>war</packaging>
+    <packaging>jar</packaging>
 
   <name>gateway</name>
   <description>Api Gateway</description>
@@ -20,5 +20,18 @@
     <server.port>8080</server.port>
     <service.name>${name}</service.name>
   </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>de.flapdoodle.embed</groupId>
+            <artifactId>de.flapdoodle.embed.mongo</artifactId>
+            <version>1.50.5</version>
+        </dependency>
+        <dependency>
+            <groupId>cz.jirutka.spring</groupId>
+            <artifactId>embedmongo-spring</artifactId>
+            <version>RELEASE</version>
+        </dependency>
+    </dependencies>
 
 </project>
