@@ -1,2 +1,2 @@
 # moosh
-A REST service registry API
+A REST and distributed Service Registry API
