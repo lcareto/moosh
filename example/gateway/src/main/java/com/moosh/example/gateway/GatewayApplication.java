@@ -1,6 +1,6 @@
 package com.moosh.example.gateway;
 
-import com.moosh.utils.annotation.EnableRegistryServer;
+import com.moosh.registry.server.EnableRegistryServer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

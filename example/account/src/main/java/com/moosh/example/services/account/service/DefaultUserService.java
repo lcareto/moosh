@@ -15,19 +15,13 @@ import java.util.UUID;
 @Service
 public class DefaultUserService implements UserService {
 
-  @Override
-  public List<User> get() {
+    private static final String A_USER_ID = UUID.randomUUID().toString();
 
-    User jeannette = new User();
-    jeannette.setId(UUID.randomUUID().toString());
-    jeannette.setFirstName("Jeannette");
-    jeannette.setLastName("Doe");
-
-    User john = new User();
-    john.setId(UUID.randomUUID().toString());
-    john.setFirstName("John");
-    john.setLastName("Doe");
-
-    return Arrays.asList(jeannette, john);
-  }
+    @Override
+    public List<User> get() {
+        return Arrays.asList(
+                new User(A_USER_ID, "Jeanette", "Doe"),
+                new User(A_USER_ID, "John", "Doe")
+        );
+    }
 }
