@@ -3,13 +3,16 @@ package com.moosh.registry.server.controller;
 import com.moosh.registry.dto.ClientRegistry;
 import com.moosh.registry.server.service.ClientRegistryService;
 import com.moosh.registry.utils.MooshUtils;
-import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * Created on 25/07/2018
@@ -33,11 +36,8 @@ public class ClientRegistryServerController {
     }
 
     @PostMapping
-    public ClientRegistry register(@RequestBody ClientRegistry source, HttpServletRequest request) {
+    public ClientRegistry register(@RequestBody ClientRegistry source) {
         LOG.info("Registering client [{}]", source.getId());
-        if (StringUtils.isBlank(source.getUrl())) {
-            // TODO: 2018-11-20 retrieve client base-url using strategy based on header Origin, X-Forwarded-For or Referer
-        }
         return service.save(source);
     }
 

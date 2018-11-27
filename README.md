@@ -5,7 +5,7 @@ A REST and distributed (database-centric) Service Registry API, designed to allo
 
 Let's imagine you have :
 - A `gateway-service` a SpringBoot based application
-```
+```java
 @EnableRegistryServer
 @SpringBootApplication
 public class GatewayApplication {
@@ -17,7 +17,7 @@ public class GatewayApplication {
 ```
 
 - An `account-service`, a SpringBoot base application that has a Users API available at `/users`:
-````
+```java
 @EnableClientRegistry
 @SpringBootApplication
 public class AccountServiceApplication {
@@ -26,7 +26,7 @@ public class AccountServiceApplication {
     SpringApplication.run(AccountServiceApplication.class, args);
   }
 }
-````
+```
 
 ### Registration
 
@@ -37,7 +37,7 @@ If any Discovery Server (Spring Eureka, Spring Cloud Kubernetes) is present in t
 As we are using Http calls to register, client itself does not need to be a Spring application but can be a Python/NodeJs/whatever application that sends a request to `/moosh/clients` register to the running Gateway.
 
 Eg. Here the Gateway is running locally on port `8080` and we want to start the `python-service` on port `8081`
-```
+```bash
 curl -X POST \
   http://localhost:8080/moosh/clients \
   -H 'Content-Type: application/json' \
@@ -68,3 +68,11 @@ Getting started
     <li>Java 8</li>
     <li>Maven 3.5</li>
 </ul>
+
+Example 
+----------------
+Using Moosh Registry you could achieve the following level of architecture; 
+
+A small example has been provided in `/example` folder;
+
+![Alt text](example/Moosh_with_MS_architecture_on_Kubernetes.png?raw=true "Moosh with MS architecture on Kubernetes")

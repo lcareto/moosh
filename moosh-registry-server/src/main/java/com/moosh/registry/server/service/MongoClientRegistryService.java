@@ -5,6 +5,7 @@ import com.moosh.registry.dto.RequestMapping;
 import com.moosh.registry.server.repository.MongoClientRegistryRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.netflix.zuul.filters.ZuulProperties;
 import org.springframework.cloud.netflix.zuul.web.ZuulHandlerMapping;
 import org.springframework.stereotype.Service;
@@ -20,17 +21,19 @@ public class MongoClientRegistryService implements ClientRegistryService {
     private final MongoClientRegistryRepository repository;
     private final ZuulProperties zuulProperties;
     private final ZuulHandlerMapping zuulHandlerMapping;
+    private final DiscoveryClient discoveryClient;
 
     @Autowired
     public MongoClientRegistryService(MongoClientRegistryRepository repository,
                                       ZuulProperties zuulProperties,
-                                      ZuulHandlerMapping zuulHandlerMapping) {
+                                      ZuulHandlerMapping zuulHandlerMapping,
+                                      DiscoveryClient discoveryClient) {
 
         LOG.info("Using {}", MongoClientRegistryService.class.getName());
         this.repository = repository;
         this.zuulProperties = zuulProperties;
         this.zuulHandlerMapping = zuulHandlerMapping;
-
+        this.discoveryClient = discoveryClient;
     }
 
     @Override
